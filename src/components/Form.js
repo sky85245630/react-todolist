@@ -13,10 +13,16 @@ export default class Form extends Component {
         this.props.createTodo(this.state.text);
     }
 
+    handleChange(e) {
+        this.setState({
+            text: e.target.value,
+        });
+    }
+
     render() {
         return (
             <div>
-                <input />
+                <input onChange={(e) => this.handleChange(e)} />
                 {/* <button onClick={() => this.props.createTodo(this.state.text)}>
                     new
                 </button> */}
