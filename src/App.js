@@ -6,22 +6,36 @@ export default class App extends Component {
     constructor() {
         super();
         console.log("constructor", this);
-        let app_list = ["app1", "app2", "app3"];
+        let app_list = [
+            { id: 1, text: "app1" },
+            { id: 2, text: "app2" },
+            { id: 3, text: "app3" },
+        ];
         this.state = {
             todos: app_list,
+            startId: 3,
         };
     }
 
     createTodo(e) {
         this.setState({
-            todos: [...this.state.todos, e],
+            todos: [
+                ...this.state.todos,
+                {
+                    id: this.state.startId,
+                    text: e,
+                },
+            ],
+            startId: this.state.startId + 1,
+            //++會報警告
+            // startId: this.state.startId++,
         });
     }
 
     removeTodo(e) {
         this.setState({
             todos: this.state.todos.filter((todo) => {
-                return e !== todo;
+                return todo.id !== e;
             }),
         });
     }

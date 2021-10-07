@@ -11,10 +11,10 @@ export default class List extends Component {
                         // console.log("idx", idx);
                         return (
                             <li
-                                key={idx}
-                                onClick={() => this.props.removeTodo(e)}
+                                key={e.id}
+                                onClick={() => this.props.removeTodo(e.id)}
                             >
-                                {e}
+                                {e.text}
                             </li>
                         );
                     })}
