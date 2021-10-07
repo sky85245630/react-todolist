@@ -18,6 +18,14 @@ export default class App extends Component {
         });
     }
 
+    removeTodo(e) {
+        this.setState({
+            todos: this.state.todos.filter((todo) => {
+                return e !== todo;
+            }),
+        });
+    }
+
     render() {
         return (
             <div>
@@ -27,7 +35,10 @@ export default class App extends Component {
                         this.createTodo(e);
                     }}
                 />
-                <List todos={this.state.todos} />
+                <List
+                    todos={this.state.todos}
+                    removeTodo={(e) => this.removeTodo(e)}
+                />
             </div>
         );
     }
