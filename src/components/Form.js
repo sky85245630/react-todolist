@@ -6,11 +6,14 @@ export default class Form extends Component {
         this.state = {
             text: "asd",
         };
-        this.createTodo = this.createTodo.bind(this);
+        // this.createTodo = this.createTodo.bind(this);
     }
 
     createTodo() {
         this.props.createTodo(this.state.text);
+        this.setState({
+            text: "",
+        });
     }
 
     handleChange(e) {
@@ -19,10 +22,20 @@ export default class Form extends Component {
         });
     }
 
+    handleKeyDown(e) {
+        e.keyCode === 13 && this.createTodo();
+    }
+
     render() {
         return (
             <div>
-                <input onChange={(e) => this.handleChange(e)} />
+                <input
+                    onChange={(e) => this.handleChange(e)}
+                    onKeyDown={(e) => {
+                        this.handleKeyDown(e);
+                    }}
+                    value={this.state.text}
+                />
                 {/* <button onClick={() => this.props.createTodo(this.state.text)}>
                     new
                 </button> */}
