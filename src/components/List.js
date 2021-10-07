@@ -9,7 +9,14 @@ export default class List extends Component {
                     {this.props.todos.map((e, idx) => {
                         // console.log("e", e);
                         // console.log("idx", idx);
-                        return <li key={idx}>{e}</li>;
+                        return (
+                            <li
+                                key={idx}
+                                onClick={() => this.props.removeTodo(e)}
+                            >
+                                {e}
+                            </li>
+                        );
                     })}
                 </ol>
             </div>
