@@ -6,13 +6,28 @@ export default class App extends Component {
     constructor() {
         super();
         console.log("constructor", this);
+        let app_list = ["app1", "app2", "app3"];
+        this.state = {
+            todos: app_list,
+        };
     }
+
+    createTodo(e) {
+        this.setState({
+            todos: [...this.state.todos, e],
+        });
+    }
+
     render() {
         return (
             <div>
-                <Title></Title>
-                <Form></Form>
-                <List></List>
+                <Title todos={this.state.todos} />
+                <Form
+                    createTodo={(e) => {
+                        this.createTodo(e);
+                    }}
+                />
+                <List todos={this.state.todos} />
             </div>
         );
     }

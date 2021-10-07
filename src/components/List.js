@@ -2,12 +2,15 @@ import React, { Component } from "react";
 
 export default class List extends Component {
     render() {
+        console.log("List props", this.props.todos);
         return (
             <div>
                 <ol>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
+                    {this.props.todos.map((e, idx) => {
+                        // console.log("e", e);
+                        // console.log("idx", idx);
+                        return <li key={idx}>{e}</li>;
+                    })}
                 </ol>
             </div>
         );
