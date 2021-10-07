@@ -10,6 +10,10 @@ export default class Form extends Component {
     }
 
     createTodo() {
+        //如果沒有東西 就不要做事情
+        if (!this.state.text) {
+            return;
+        }
         this.props.createTodo(this.state.text);
         this.setState({
             text: "",
